@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{2073D9A1-2236-1686-E450-70CDB433FEB9}</ProjectGuid>
+    <ProjectGuid>{99568BC3-680C-FE54-3B6E-B50296D82CFC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Board\Tile.cs" />
+     <Compile Include="Assets\Scripts\CameraView.cs" />
      <Compile Include="Assets\Scripts\Dice.cs" />
      <Compile Include="Assets\Scripts\Game Manager\BoardSettings.cs" />
      <Compile Include="Assets\Scripts\Piece.cs" />

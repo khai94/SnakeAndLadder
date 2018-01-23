@@ -20,7 +20,6 @@ public class Tile : MonoBehaviour {
 	void Start () {
 		x = (int)transform.position.x + 10;
 		y = (int)transform.position.y * 10;
-		Debug.Log (x + ", " + y);
 		tileNum = (x + y) / 10;
 
 		tileNumberText.text = tileNum.ToString ();

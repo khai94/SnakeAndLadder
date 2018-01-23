@@ -5,12 +5,15 @@ using System.Collections.Generic;
 public class BoardSettings : MonoBehaviour {
 	public GameObject tilePrefab;
 	public List<Tile> tileList;
+	public List<Piece> playerList;
+
 	public int boardSize = 10;
 	private int tileSize = 10;
 
 	// Use this for initialization
 	void Start () {
 		tileList = new List<Tile> ();
+		playerList = new List<Piece> ();
 		SpawnBoard ();
 	}
 	
