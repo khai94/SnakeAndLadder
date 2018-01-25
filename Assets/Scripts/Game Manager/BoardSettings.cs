@@ -8,15 +8,24 @@ public class BoardSettings : MonoBehaviour {
 	public List<Piece> playerList;
 
 	public int boardSize = 10;
+	public bool GameIsOver = false;
+	public Piece winner;
 	private int tileSize = 10;
 
-	// Use this for initialization
-	void Start () {
+	void Awake () {
 		tileList = new List<Tile> ();
 		playerList = new List<Piece> ();
 		SpawnBoard ();
 	}
-	
+
+	void Start () {
+		GameObject[] playerArray = GameObject.FindGameObjectsWithTag ("Player");
+
+		foreach (GameObject go in playerArray) {
+			playerList.Add (go.GetComponent<Piece> ());
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 	
