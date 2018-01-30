@@ -21,11 +21,13 @@ public class Piece : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 		CheckWinLoseCondition ();
 	}
 
 	public void UpdatePosition(){
 		position = currentTile.tileNum;
+		Debug.Log (gameObject.ToString() + " position: " + position.ToString());
 		transform.position = new Vector3 (currentTile.gameObject.transform.position.x, currentTile.gameObject.transform.position.y, transform.position.z);
 	}
 
