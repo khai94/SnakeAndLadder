@@ -9,6 +9,7 @@ public class Dice : MonoBehaviour {
 	private bool turnEnds = false;
 	public Piece currentPiece;
 	private BoardSettings gameBoard;
+	private UISettings gameUI;
 	private CameraView camera;
 
 	// Use this for initialization
@@ -17,6 +18,12 @@ public class Dice : MonoBehaviour {
 			GameObject go = GameObject.Find ("GameManager");
 			gameBoard = go.GetComponent<BoardSettings> ();
 			max = gameBoard.playerList.Count - 1;
+		}
+
+		if (gameUI == null) {
+			GameObject go = GameObject.Find ("UIManager");
+			gameUI = go.GetComponent<UISettings> ();
+			gameUI.playerName.text = currentPiece.name;
 		}
 
 		if (camera == null) {
@@ -35,12 +42,13 @@ public class Dice : MonoBehaviour {
 
 			currentPiece = gameBoard.playerList [turn];
 			camera.target = currentPiece.transform;
+			gameUI.playerName.text = currentPiece.name;
 			turnEnds = false;
 		}
 	}
 
 	public void RollDice(){
-		if (!isMoving) {
+		if (!isMoving & !gameBoard.GameIsOver) {
 			turnEnds = false;
 			isMoving = true;
 			StartCoroutine (Move ());
@@ -50,6 +58,9 @@ public class Dice : MonoBehaviour {
 	private IEnumerator Move() {
 		value = Random.Range (1, 7);
 		for (int i = 0; i < value; i++) {
+			if (gameBoard.GameIsOver)
+				break;
+			
 			currentPiece.position++;
 
 			if (currentPiece.position > 100) {

@@ -4,6 +4,7 @@ using System.Collections;
 public class Piece : MonoBehaviour {
 	public Tile currentTile;
 	public int position;
+	public string name;
 	private BoardSettings gameBoard;
 
 	// Use this for initialization
@@ -27,7 +28,6 @@ public class Piece : MonoBehaviour {
 
 	public void UpdatePosition(){
 		position = currentTile.tileNum;
-		Debug.Log (gameObject.ToString() + " position: " + position.ToString());
 		transform.position = new Vector3 (currentTile.gameObject.transform.position.x, currentTile.gameObject.transform.position.y, transform.position.z);
 	}
 
