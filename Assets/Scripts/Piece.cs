@@ -1,16 +1,24 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
 
-public class Piece : MonoBehaviour {
+public class Piece : MonoBehaviour, IComparable<Piece> {
 	public Tile currentTile;
 	public int position;
+	public int turnOrder;
 	public string name;
+	private GameSettings gameManager;
 	private BoardSettings gameBoard;
 
 	// Use this for initialization
 	void Start () {
-		if (gameBoard == null) {
+		if (gameManager == null) {
 			GameObject go = GameObject.FindGameObjectWithTag ("GameController");
+			gameManager = go.GetComponent<GameSettings> ();
+		}
+
+		if (gameBoard == null) {
+			GameObject go = GameObject.FindGameObjectWithTag ("Board");
 			gameBoard = go.GetComponent<BoardSettings> ();
 		}
 
@@ -33,8 +41,16 @@ public class Piece : MonoBehaviour {
 
 	private void CheckWinLoseCondition(){
 		if (currentTile == gameBoard.tileList [gameBoard.tileList.Count-1]) {
-			gameBoard.GameIsOver = true;
-			gameBoard.winner = this;
+			gameManager.GameIsOver = true;
+			gameManager.winner = this;
+		}
+	}
+
+	public int CompareTo(Piece piece){
+		if (piece == null) {
+			return 1;
+		} else {
+			return this.turnOrder.CompareTo (piece.turnOrder);
 		}
 	}
 }

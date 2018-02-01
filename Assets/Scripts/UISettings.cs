@@ -7,20 +7,20 @@ public class UISettings : MonoBehaviour {
 	public Text winnerName;
 	public Image playerSpriteImage;
 	public GameObject gameOverPanel;
-	private BoardSettings gameBoard;
+	private GameSettings gameManager;
 
 	// Use this for initialization
 	void Start () {
-		if (gameBoard == null) {
-			GameObject go = GameObject.Find ("GameManager");
-			gameBoard = go.GetComponent<BoardSettings> ();
+		if (gameManager == null) {
+			GameObject go = GameObject.FindGameObjectWithTag ("GameController");
+			gameManager = go.GetComponent<GameSettings> ();
 		}
 		gameOverPanel.SetActive (false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (gameBoard.GameIsOver) {
+		if (gameManager.GameIsOver) {
 			winnerName.text = playerName.text;
 			gameOverPanel.SetActive (true);
 		}

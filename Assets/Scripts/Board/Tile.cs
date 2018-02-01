@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 
 enum TileType {
 	Normal,
@@ -7,7 +9,7 @@ enum TileType {
 	Ladder
 };
 
-public class Tile : MonoBehaviour {
+public class Tile : MonoBehaviour, IComparable<Tile>{
 	public TextMesh tileNumberText;
 
 	private TileType type;
@@ -18,15 +20,14 @@ public class Tile : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		x = (int)transform.position.x + 10;
-		y = (int)transform.position.y * 10;
-		tileNum = (x + y) / 10;
-
 		tileNumberText.text = tileNum.ToString ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public int CompareTo(Tile tile){
+		if (tile == null) {
+			return 1;
+		} else {
+			return this.tileNum.CompareTo (tile.tileNum);
+		}
 	}
 }
