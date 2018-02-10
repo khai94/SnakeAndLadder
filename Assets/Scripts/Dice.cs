@@ -41,6 +41,8 @@ public class Dice : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (turnEnds) {
+			CheckForEvent ();
+
 			if (turn < max) {
 				++turn;
 			} else {
@@ -76,9 +78,21 @@ public class Dice : MonoBehaviour {
 
 			currentPiece.currentTile = gameBoard.tileList [currentPiece.position-1];
 			currentPiece.UpdatePosition ();
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(1.0f);
 		}
 		turnEnds = true;
 		isMoving = false;
+	}
+
+	private void CheckForEvent() {
+		if (currentPiece.currentTile.head == null) {
+			Debug.Log ("Normal tile");
+			return;
+		}
+
+		if (currentPiece.currentTile.head.type == TileType.Snake || currentPiece.currentTile.head.type == TileType.Ladder) {
+			currentPiece.currentTile = currentPiece.currentTile.connectedTile;
+			currentPiece.UpdatePosition ();
+		}
 	}
 }
