@@ -9,9 +9,12 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 	public string name;
 	private GameSettings gameManager;
 	private BoardSettings gameBoard;
+	private SpriteRenderer spr;
 
 	// Use this for initialization
 	void Start () {
+		spr = gameObject.GetComponent<SpriteRenderer>();
+
 		if (gameManager == null) {
 			GameObject go = GameObject.FindGameObjectWithTag ("GameController");
 			gameManager = go.GetComponent<GameSettings> ();
@@ -37,6 +40,12 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 	public void UpdatePosition(){
 		position = currentTile.tileNum;
 		transform.position = new Vector3 (currentTile.gameObject.transform.position.x, currentTile.gameObject.transform.position.y, transform.position.z);
+
+		if (transform.position.x > gameBoard.tileList [position].transform.position.x) {
+			spr.flipX = true;
+		} else if (transform.position.x < gameBoard.tileList [position].transform.position.x) {
+			spr.flipX = false;
+		}
 	}
 
 	private void CheckWinLoseCondition(){

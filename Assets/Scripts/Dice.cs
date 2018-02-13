@@ -6,6 +6,7 @@ public class Dice : MonoBehaviour {
 	public int turn = 0;
 	public int max;
 	private bool isMoving = false;
+	private bool isMoved = false;
 	private bool turnEnds = false;
 	public Piece currentPiece;
 
@@ -57,7 +58,7 @@ public class Dice : MonoBehaviour {
 	}
 
 	public void RollDice(){
-		if (!isMoving & !gameManager.GameIsOver) {
+		if (!isMoving && !gameManager.GameIsOver && !isMoved) {
 			turnEnds = false;
 			isMoving = true;
 			StartCoroutine (Move ());
@@ -78,9 +79,9 @@ public class Dice : MonoBehaviour {
 
 			currentPiece.currentTile = gameBoard.tileList [currentPiece.position-1];
 			currentPiece.UpdatePosition ();
-			yield return new WaitForSeconds(1.0f);
+			yield return new WaitForSeconds(0.1f);
 		}
-		turnEnds = true;
+		isMoved = true;
 		isMoving = false;
 	}
 
@@ -94,5 +95,10 @@ public class Dice : MonoBehaviour {
 			currentPiece.currentTile = currentPiece.currentTile.connectedTile;
 			currentPiece.UpdatePosition ();
 		}
+	}
+
+	public void EndTurn(){
+		isMoved = false;
+		turnEnds = true;
 	}
 }
