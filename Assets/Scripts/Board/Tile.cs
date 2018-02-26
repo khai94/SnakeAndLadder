@@ -20,9 +20,26 @@ public class Tile : MonoBehaviour, IComparable<Tile>{
 
 	// Use this for initialization
 	void Start () {
+		
+		SetTileNumber ();
+
+		ResetTileType ();
+	}
+
+	void SetTileNumber(){
+		string tileNumberStr = gameObject.name.Substring (6);
+		tileNumberStr = tileNumberStr.Remove (tileNumberStr.LastIndexOf(')'));
+
+		int result;
+		Int32.TryParse (tileNumberStr, out result);
+
+		tileNum = result + 1;
+
 		tileNumberText = GetComponentInChildren<TextMesh> ();
 		tileNumberText.text = tileNum.ToString ();
+	}
 
+	void ResetTileType(){
 		if (type != TileType.Normal) {
 
 			if (connectedTile.connectedTile == null || connectedTile.connectedTile != this.GetComponent<Tile>()) {
@@ -34,7 +51,7 @@ public class Tile : MonoBehaviour, IComparable<Tile>{
 			if (type == TileType.Snake) {
 				if (tileNum < connectedTile.tileNum) {
 					connectedTile.head = this.GetComponent<Tile>();		// trigger is the higher of the two
-					head = null;								// the other tile doesn't have a head
+					head = null;										// the other tile doesn't have a head
 				}
 			}
 

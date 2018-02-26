@@ -9,7 +9,7 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 	public string name;
 	private GameSettings gameManager;
 	private BoardSettings gameBoard;
-	private SpriteRenderer spr;
+	public SpriteRenderer spr;
 
 	// Use this for initialization
 	void Start () {
@@ -34,12 +34,16 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 	// Update is called once per frame
 	void Update () {
 		
-		CheckWinLoseCondition ();
+		//CheckWinLoseCondition ();
 	}
 
 	public void UpdatePosition(){
 		position = currentTile.tileNum;
-		transform.position = new Vector3 (currentTile.gameObject.transform.position.x, currentTile.gameObject.transform.position.y, transform.position.z);
+		transform.position = new Vector3 (
+			currentTile.gameObject.transform.position.x, 
+			currentTile.gameObject.transform.position.y, 
+			transform.position.z
+		);
 
 		if (transform.position.x > gameBoard.tileList [position].transform.position.x) {
 			spr.flipX = true;
@@ -47,14 +51,7 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 			spr.flipX = false;
 		}
 	}
-
-	private void CheckWinLoseCondition(){
-		if (currentTile == gameBoard.tileList [gameBoard.tileList.Count-1]) {
-			gameManager.GameIsOver = true;
-			gameManager.winner = this;
-		}
-	}
-
+		
 	public int CompareTo(Piece piece){
 		if (piece == null) {
 			return 1;
