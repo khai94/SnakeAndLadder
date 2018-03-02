@@ -12,6 +12,7 @@ public class Dice : MonoBehaviour {
 	public Piece currentPiece;
 	public Button diceButton;
 	public Button endTurnButton;
+	public Sprite[] diceFaces = new Sprite[6];
 
 	private GameSettings gameManager;
 	private BoardSettings gameBoard;
@@ -76,6 +77,7 @@ public class Dice : MonoBehaviour {
 
 		for (int i = 0; i < 5; i++) {
 			value = Random.Range (1, 7);
+			diceButton.image.sprite = diceFaces [value - 1];
 			yield return new WaitForSeconds (0.2f);
 		}
 
