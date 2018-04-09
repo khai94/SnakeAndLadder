@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Managers\SceneManagement.cs" />
      <Compile Include="Assets\Scripts\Managers\UISettings.cs" />
      <Compile Include="Assets\Scripts\Player\Piece.cs" />
+     <Compile Include="Assets\Scripts\PlayerCount.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
