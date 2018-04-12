@@ -139,7 +139,6 @@ public class MovePiece : MonoBehaviour {
 		if (currentPiece.currentTile.head.type == TileType.Snake || currentPiece.currentTile.head.type == TileType.Ladder) {
 			Debug.Log ("Ladder/Snake");
 			currentPiece.currentTile = currentPiece.currentTile.connectedTile;
-			int target = currentPiece.currentTile.tileNum;
 			currentPiece.UpdatePosition ();
 		}
 	}

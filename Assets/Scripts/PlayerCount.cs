@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerCount : MonoBehaviour {
 
 	public Dropdown dropdown;
-	public GameObject[] playerArray;
+	public PlayerSlot[] playerArray;
 
 	// Use this for initialization
 	void Start () {
@@ -22,12 +22,12 @@ public class PlayerCount : MonoBehaviour {
 	{
 		int count = dropdown.value + 2;
 
-		foreach (GameObject go in playerArray) {
-			go.SetActive (false);
+		foreach (PlayerSlot slot in playerArray) {
+			slot.gameObject.SetActive (false);
 		}
 
 		for (int i = 0; i < count; i++) {
-			playerArray [i].SetActive (true);
+			playerArray [i].gameObject.SetActive (true);
 		}
 	}
 }

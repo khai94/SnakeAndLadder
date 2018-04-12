@@ -51,16 +51,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AvatarLoader.cs" />
      <Compile Include="Assets\Scripts\Board\BoardSettings.cs" />
      <Compile Include="Assets\Scripts\Board\Tile.cs" />
      <Compile Include="Assets\Scripts\Dice\Dice.cs" />
      <Compile Include="Assets\Scripts\Dice\MovePiece.cs" />
      <Compile Include="Assets\Scripts\Managers\CameraView.cs" />
+     <Compile Include="Assets\Scripts\Managers\DataManagement.cs" />
      <Compile Include="Assets\Scripts\Managers\GameSettings.cs" />
      <Compile Include="Assets\Scripts\Managers\SceneManagement.cs" />
      <Compile Include="Assets\Scripts\Managers\UISettings.cs" />
      <Compile Include="Assets\Scripts\Player\Piece.cs" />
      <Compile Include="Assets\Scripts\PlayerCount.cs" />
+     <Compile Include="Assets\Scripts\PlayerSlot.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -9,6 +9,7 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 	public int position;
 	public int turnOrder;
 	public string name;
+	public Sprite avatar;
 
 	public SpriteRenderer spr;
 
@@ -23,6 +24,7 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 		if (gameManager == null) {
 			GameObject go = GameObject.FindGameObjectWithTag ("GameController");
 			gameManager = go.GetComponent<GameSettings> ();
+			spr.sprite = avatar;
 		}
 
 		if (gameBoard == null) {
