@@ -27,13 +27,6 @@ public class DataManagement : MonoBehaviour {
 			Debug.Log ("Don't destroy");
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyUp (KeyCode.Space)) {
-			SetPlayerSlot ();
-		}
-	}
 
 	public void SetPlayerSlot()
 	{

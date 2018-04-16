@@ -17,6 +17,8 @@ public class PlayerSlot : MonoBehaviour {
 		nameField = GetComponentInChildren<InputField> ();
 		//avatarImage = GetComponentInChildren<Image> ();
 		botToggle = GetComponentInChildren<Toggle> ();
+
+		SetAll ();
 	}
 
 	void Update()
@@ -39,5 +41,12 @@ public class PlayerSlot : MonoBehaviour {
 	public void SetIsBot()
 	{
 		isBot = botToggle.isOn;
+	}
+
+	private void SetAll()
+	{
+		SetName ();
+		SetAvatar ();
+		SetIsBot ();
 	}
 }

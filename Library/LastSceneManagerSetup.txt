@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/OfflineLobby.unity
+- path: Assets/Scenes/Classic.unity
   isLoaded: 1
   isActive: 1

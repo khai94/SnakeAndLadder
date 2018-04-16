@@ -55,11 +55,13 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 
 		//Vector3 direction = target - this.transform.position;
 
+		/*
 		if (transform.position.x > target.x && target.x != 0) {
 			spr.flipX = true;
 		} else if (transform.position.x < target.x) {
 			spr.flipX = false;
 		}
+		*/
 
 		this.transform.position = target;
 

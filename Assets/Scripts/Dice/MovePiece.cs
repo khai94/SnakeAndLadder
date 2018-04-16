@@ -22,27 +22,23 @@ public class MovePiece : MonoBehaviour {
 	private CameraView camera;
 
 	// Use this for initialization
+	void Awake () {
+		GameObject go = GameObject.FindGameObjectWithTag ("GameController");
+		gameManager = go.GetComponent<GameSettings> ();
+		max = gameManager.playerList.Count - 1;
+		go = GameObject.FindGameObjectWithTag ("Board");
+		gameBoard = go.GetComponent<BoardSettings> ();
+		go = GameObject.Find ("UIManager");
+		gameUI = go.GetComponent<UISettings> ();
+
+
+		camera = Camera.main.gameObject.GetComponent<CameraView> ();
+
+
+	}
+
 	void Start () {
-		if (gameManager == null) {
-			GameObject go = GameObject.FindGameObjectWithTag ("GameController");
-			gameManager = go.GetComponent<GameSettings> ();
-			max = gameManager.playerList.Count - 1;
-		}
-
-		if (gameBoard == null) {
-			GameObject go = GameObject.FindGameObjectWithTag ("Board");
-			gameBoard = go.GetComponent<BoardSettings> ();
-		}
-
-		if (gameUI == null) {
-			GameObject go = GameObject.Find ("UIManager");
-			gameUI = go.GetComponent<UISettings> ();
-			UpdatePlayerInfo ();
-		}
-
-		if (camera == null) {
-			camera = Camera.main.gameObject.GetComponent<CameraView> ();
-		}
+		UpdatePlayerInfo ();
 
 		if (currentPiece.isBot) {
 			BotMove ();
@@ -56,7 +52,7 @@ public class MovePiece : MonoBehaviour {
 		}
 
 		if (turnEnds && !gameManager.GameIsOver) {
-			CheckForEvent ();
+			
 
 			if (turn < max) {
 				++turn;
@@ -106,7 +102,7 @@ public class MovePiece : MonoBehaviour {
 
 			currentPiece.position++;
 			target++;
-			Debug.Log (currentPiece.ToString() + "| Target: " + target);
+			//Debug.Log (currentPiece.ToString() + "| Target: " + target);
 
 			if (target > 99) {
 				target = 99;
@@ -115,7 +111,7 @@ public class MovePiece : MonoBehaviour {
 			currentPiece.UpdatePosition (target);
 			yield return new WaitForSeconds(1f);
 		}
-
+		CheckForEvent ();
 		isMoved = true;
 		isMoving = false;
 		endTurnButton.interactable = true;
@@ -130,16 +126,26 @@ public class MovePiece : MonoBehaviour {
 			return;
 		}
 
-		if (currentPiece.currentTile.head == null) {
-			//Debug.Log ("Normal tile");
+		if (currentPiece.currentTile.head != null) {
+			if (currentPiece.currentTile.head.type == TileType.Snake || currentPiece.currentTile.head.type == TileType.Ladder) {
+				Debug.Log ("Ladder/Snake");
+				currentPiece.currentTile = currentPiece.currentTile.connectedTile;
+				currentPiece.UpdatePosition ();
+			}
 			return;
-		}
+		} else {
+			if (currentPiece.currentTile.type == TileType.Chance) {
+				Debug.Log ("Chance");
 
-		// check tile type effects
-		if (currentPiece.currentTile.head.type == TileType.Snake || currentPiece.currentTile.head.type == TileType.Ladder) {
-			Debug.Log ("Ladder/Snake");
-			currentPiece.currentTile = currentPiece.currentTile.connectedTile;
-			currentPiece.UpdatePosition ();
+				if (currentPiece.currentTile.chance == null) {
+					return;
+				}
+
+				Chance chance = currentPiece.currentTile.GetComponent<Chance> ();
+				int effect = Random.Range (0, (int)Effect.treasure + 1);
+				//Debug.Log (effect.ToString());
+				chance.ExecuteEffect (effect);
+			}
 		}
 	}
 
