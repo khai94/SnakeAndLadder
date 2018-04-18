@@ -109,6 +109,7 @@ public class MovePiece : MonoBehaviour {
 			}
 
 			currentPiece.UpdatePosition (target);
+			camera.FollowTarget ();
 			yield return new WaitForSeconds(1f);
 		}
 		CheckForEvent ();
