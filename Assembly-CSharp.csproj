@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\Player\Piece.cs" />
      <Compile Include="Assets\Scripts\PlayerCount.cs" />
      <Compile Include="Assets\Scripts\PlayerSlot.cs" />
+     <None Include="Assets\Fonts\bradybunch.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

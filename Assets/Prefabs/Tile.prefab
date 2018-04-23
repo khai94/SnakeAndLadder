@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114000013861013320}
   m_Layer: 0
   m_Name: Tile
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011900450550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.6, y: 23.4, z: -2.9}
+  m_LocalPosition: {x: 0, y: 0, z: -50}
   m_LocalScale: {x: 50, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 4000011862449662}
@@ -86,7 +86,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 60d90112bc9a754448d657432921d5e0, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,18 +115,18 @@ TextMesh:
   m_GameObject: {fileID: 1000011900450550}
   m_Text: 1
   m_OffsetZ: 0
-  m_CharacterSize: 0.2
+  m_CharacterSize: 0.1
   m_LineSpacing: 1
-  m_Anchor: 2
+  m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 0
-  m_FontSize: 8
-  m_FontStyle: 1
+  m_FontSize: 74
+  m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Font: {fileID: 12800000, guid: 60d90112bc9a754448d657432921d5e0, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 2583691264
 --- !u!114 &114000013861013320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,6 +142,7 @@ MonoBehaviour:
   tileNum: 0
   connectedTile: {fileID: 0}
   head: {fileID: 0}
+  chance: {fileID: 0}
 --- !u!212 &212000013077672128
 SpriteRenderer:
   m_ObjectHideFlags: 1
