@@ -5,15 +5,19 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour {
 	public float scrollSpeed = 2f;
 	public float zoomSpeed = 0.5f;
-	private Vector3 mouseDragOrigin;
-	private float maxY = 500f;
-	private float minY = 90f;
+	public float maxY = 500f;
+	public float minY = 90f;
+	public float maxX = 500f;
+	public float minX = 200f;
 	private float maxZoom = 250f;
 	private float minZoom = 100f;
 
+	private Vector3 mouseDragOrigin;
+
 	// Update is called once per frame
 	void LateUpdate () {
-		if (transform.position.y >= 90 && transform.position.y <= 500) {
+		if ((transform.position.y >= minY && transform.position.y <= maxY) || 
+			(transform.position.x >= minX && transform.position.x <= maxX)) {
 			if (Application.platform == RuntimePlatform.Android) {
 				if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Moved) {
 					Vector2 touchDeltaPosition = Input.GetTouch (0).deltaPosition;
@@ -52,7 +56,7 @@ public class CameraMove : MonoBehaviour {
 
 				Vector3 pos = Camera.main.ScreenToViewportPoint (Input.mousePosition - mouseDragOrigin);
 				
-				Vector3 move = new Vector3 (0, pos.y * scrollSpeed, 0);
+				Vector3 move = new Vector3 (pos.x * scrollSpeed, pos.y * scrollSpeed, 0);
 
 
 				transform.Translate (move, Space.World);
@@ -65,6 +69,12 @@ public class CameraMove : MonoBehaviour {
 
 			if (transform.position.y > maxY)
 				transform.position = new Vector3 (transform.position.x, maxY, transform.position.z);
+
+			if (transform.position.x < minX)
+				transform.position = new Vector3 (minX, transform.position.y, transform.position.z);
+
+			if (transform.position.x > maxX)
+				transform.position = new Vector3 (maxX, transform.position.y, transform.position.z);
 		}
 	}
 }

@@ -30,16 +30,10 @@ public class MovePiece : MonoBehaviour {
 		gameBoard = go.GetComponent<BoardSettings> ();
 		go = GameObject.Find ("UIManager");
 		gameUI = go.GetComponent<UISettings> ();
-
-
 		camera = Camera.main.gameObject.GetComponent<CameraView> ();
-
-
 	}
 
 	void Start () {
-		UpdatePlayerInfo ();
-
 		if (currentPiece.isBot) {
 			BotMove ();
 		}
@@ -47,13 +41,16 @@ public class MovePiece : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (gameUI.playerName.name != currentPiece.name) {
+			UpdatePlayerInfo ();
+		}
+
 		if (currentPiece.isBot && isMoved) {
 			EndTurn ();
 		}
 
 		if (turnEnds && !gameManager.GameIsOver) {
-			
-
 			if (turn < max) {
 				++turn;
 			} else {
@@ -65,7 +62,7 @@ public class MovePiece : MonoBehaviour {
 			currentPiece.spr.sortingOrder = 1;
 
 			camera.target = currentPiece.transform;
-			UpdatePlayerInfo ();
+			//UpdatePlayerInfo ();
 
 			diceButton.interactable = true;
 			turnEnds = false;
@@ -164,7 +161,9 @@ public class MovePiece : MonoBehaviour {
 		RollDice ();
 	}
 
+	/*
 	private void BotEndTurn() {
 
 	}
+	*/
 }

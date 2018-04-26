@@ -22,7 +22,7 @@ public class Tile : MonoBehaviour, IComparable<Tile>{
 	public Chance chance;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		
 		SetTileNumber ();
 

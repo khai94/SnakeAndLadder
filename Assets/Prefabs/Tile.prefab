@@ -126,7 +126,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: 60d90112bc9a754448d657432921d5e0, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 2583691264
+    rgba: 2097152000
 --- !u!114 &114000013861013320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,7 +178,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 72be96817bb101e4a9a8086eb7561edf, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.628}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

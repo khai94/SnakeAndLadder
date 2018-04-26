@@ -13,6 +13,9 @@ public class BoardSettings : MonoBehaviour {
 		foreach (GameObject go in tileArray) {
 			tileList.Add (go.GetComponent<Tile> ());
 		}
+	}
+
+	void Start () {
 		tileList.Sort ();
 	}
 }
