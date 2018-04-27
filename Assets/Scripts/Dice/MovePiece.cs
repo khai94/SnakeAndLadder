@@ -148,8 +148,10 @@ public class MovePiece : MonoBehaviour {
 	}
 
 	public void EndTurn() {
-		isMoved = false;
-		turnEnds = true;
+		if (isMoved) {
+			isMoved = false;
+			turnEnds = true;
+		}
 	}
 
 	private void UpdatePlayerInfo() {
