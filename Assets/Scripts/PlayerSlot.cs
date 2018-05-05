@@ -12,12 +12,14 @@ public class PlayerSlot : MonoBehaviour {
 	public Sprite avatar;
 	public bool isBot;
 
+	public AvatarPanel avatarPanel;
+
 	void Start()
 	{
 		nameField = GetComponentInChildren<InputField> ();
 		//avatarImage = GetComponentInChildren<Image> ();
 		botToggle = GetComponentInChildren<Toggle> ();
-
+		avatarPanel = GameObject.Find ("Avatar Panel").GetComponent<AvatarPanel> ();
 		SetAll ();
 	}
 
@@ -25,6 +27,10 @@ public class PlayerSlot : MonoBehaviour {
 	{
 		if (!avatar) {
 			avatar = avatarImage.sprite;
+		}
+
+		if (avatar != avatarImage.sprite) {
+			SetAvatar ();
 		}
 	}
 
@@ -38,6 +44,14 @@ public class PlayerSlot : MonoBehaviour {
 		avatar = avatarImage.sprite;
 	}
 
+	public void LoadAvatarPanel()
+	{
+		RectTransform panelTransform = avatarPanel.gameObject.GetComponent<RectTransform> ();
+		panelTransform.localScale = new Vector3 (1.5f, 1.5f, 1.0f);
+		avatarPanel.LoadPlayerCreator (gameObject);
+		avatarPanel.ToggleAvatarButton (false);
+	}
+
 	public void SetIsBot()
 	{
 		isBot = botToggle.isOn;
@@ -48,5 +62,10 @@ public class PlayerSlot : MonoBehaviour {
 		SetName ();
 		SetAvatar ();
 		SetIsBot ();
+	}
+
+	public void CheckDuplicate()
+	{
+
 	}
 }

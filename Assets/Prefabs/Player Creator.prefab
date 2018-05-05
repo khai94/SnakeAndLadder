@@ -214,7 +214,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -231,8 +231,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114455425733700282}
-        m_MethodName: ChangeAvatar
+      - m_Target: {fileID: 114523585317006472}
+        m_MethodName: LoadAvatarPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -243,7 +243,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 114523585317006472}
-        m_MethodName: SetAvatar
+        m_MethodName: LoadAvatarPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -401,23 +401,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot: {fileID: 114523585317006472}
-  spriteList:
-  - {fileID: 21300000, guid: e6727766d030cdf42bd97fbee4c7373e, type: 3}
-  - {fileID: 21300000, guid: fb1630cb06b77984bbf5aab343ba6d15, type: 3}
-  - {fileID: 21300002, guid: e6727766d030cdf42bd97fbee4c7373e, type: 3}
-  - {fileID: 21300002, guid: fb1630cb06b77984bbf5aab343ba6d15, type: 3}
-  - {fileID: 21300004, guid: e6727766d030cdf42bd97fbee4c7373e, type: 3}
-  - {fileID: 21300004, guid: fb1630cb06b77984bbf5aab343ba6d15, type: 3}
-  - {fileID: 21300006, guid: e6727766d030cdf42bd97fbee4c7373e, type: 3}
-  - {fileID: 21300006, guid: fb1630cb06b77984bbf5aab343ba6d15, type: 3}
-  - {fileID: 21300008, guid: e6727766d030cdf42bd97fbee4c7373e, type: 3}
-  - {fileID: 21300008, guid: fb1630cb06b77984bbf5aab343ba6d15, type: 3}
-  - {fileID: 21300010, guid: e6727766d030cdf42bd97fbee4c7373e, type: 3}
-  - {fileID: 21300010, guid: fb1630cb06b77984bbf5aab343ba6d15, type: 3}
-  - {fileID: 21300012, guid: e6727766d030cdf42bd97fbee4c7373e, type: 3}
-  - {fileID: 21300012, guid: fb1630cb06b77984bbf5aab343ba6d15, type: 3}
-  - {fileID: 21300014, guid: e6727766d030cdf42bd97fbee4c7373e, type: 3}
-  - {fileID: 21300014, guid: fb1630cb06b77984bbf5aab343ba6d15, type: 3}
 --- !u!114 &114523585317006472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -435,6 +418,7 @@ MonoBehaviour:
   name: 
   avatar: {fileID: 0}
   isBot: 0
+  avatarPanel: {fileID: 0}
 --- !u!114 &114550942563548464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -494,7 +478,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: PLAYER
 --- !u!114 &114704479597221550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -584,7 +568,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1747739973478486}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 

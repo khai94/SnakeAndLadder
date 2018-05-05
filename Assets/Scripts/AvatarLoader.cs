@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AvatarLoader : MonoBehaviour {
 	public PlayerSlot slot;
-	public List<Sprite> spriteList;
+	//public List<Sprite> spriteList;
 	private int count;
 	private Image image;
 
@@ -16,13 +16,8 @@ public class AvatarLoader : MonoBehaviour {
 		slot.SetAvatar ();
 	}
 
-	public void ChangeAvatar()
+	public void ChangeAvatar(Sprite spr)
 	{
-		if (count < spriteList.Count-1)
-			count++;
-		else
-			count = 0;
-		
-		image.sprite = spriteList [count];
+		image.sprite = spr;
 	}
 }

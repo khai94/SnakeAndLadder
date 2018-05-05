@@ -8,6 +8,7 @@ TagManager:
   - Board
   - SceneManager
   - DataManager
+  - Avatar
   layers:
   - Default
   - TransparentFX
