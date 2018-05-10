@@ -2,14 +2,24 @@
 using System;
 using System.Collections;
 
+public enum Status
+{
+	Normal,
+	Stunned,
+	Slow,
+}
+
 public class Piece : MonoBehaviour, IComparable<Piece> {
 	
 	public Tile currentTile;
 	public bool isBot;
 	public int position;
 	public int turnOrder;
+	public int statusDuration = 0;
+
 	public string name;
 	public Sprite avatar;
+	public Status status = Status.Normal;
 
 	public SpriteRenderer spr;
 
@@ -36,13 +46,6 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 			currentTile = gameBoard.tileList[0];
 			//UpdatePosition ();
 		}
-	}
-
-
-	// Update is called once per frame
-	void Update () {
-		
-		//CheckWinLoseCondition ();
 	}
 
 	public void UpdatePosition() {

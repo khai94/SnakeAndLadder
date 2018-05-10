@@ -61,6 +61,8 @@ public class MovePiece : MonoBehaviour {
 			currentPiece = gameManager.playerList [turn];
 			currentPiece.spr.sortingOrder = 1;
 
+			WaitForStun ();
+
 			camera.target = currentPiece.transform;
 			//UpdatePlayerInfo ();
 
@@ -82,37 +84,58 @@ public class MovePiece : MonoBehaviour {
 	}
 
 	private IEnumerator Move() {
-		endTurnButton.interactable = false;
+		if (currentPiece.status == Status.Stunned) {
+			//WaitForStun ();
+			Debug.Log ("Still stunned");
+		} else {
+			endTurnButton.interactable = false;
 
-		int target = currentPiece.position;
+			int target = currentPiece.position;
 
-		// randomize dice face sprite before actually getting the value to get the "rolling" effect.
-		for (int i = 0; i < 5; i++) {
-			dice.value = Random.Range (1, 7);
-			diceButton.image.sprite = dice.diceFaces [dice.value - 1];
-			yield return new WaitForSeconds (0.2f);
-		}
-
-		for (int i = 0; i < dice.value; i++) {
-			if (gameManager.GameIsOver)
-				break;
-
-			currentPiece.position++;
-			target++;
-			//Debug.Log (currentPiece.ToString() + "| Target: " + target);
-
-			if (target > 99) {
-				target = 99;
+			// randomize dice face sprite before actually getting the value to get the "rolling" effect.
+			for (int i = 0; i < 5; i++) {
+				dice.value = Random.Range (1, 7);
+				diceButton.image.sprite = dice.diceFaces [dice.value - 1];
+				yield return new WaitForSeconds (0.2f);
 			}
 
-			currentPiece.UpdatePosition (target);
-			camera.FollowTarget ();
-			yield return new WaitForSeconds(1f);
+			for (int i = 0; i < dice.value; i++) {
+				if (gameManager.GameIsOver)
+					break;
+
+				currentPiece.position++;
+				target++;
+				//Debug.Log (currentPiece.ToString() + "| Target: " + target);
+
+				if (GoalReached (target)) {
+					target = 99;
+				}
+
+				currentPiece.UpdatePosition (target);
+				camera.FollowTarget ();
+				yield return new WaitForSeconds (1f);
+			}
+			CheckForEvent ();
 		}
-		CheckForEvent ();
+
 		isMoved = true;
 		isMoving = false;
 		endTurnButton.interactable = true;
+	}
+
+	public void MoveAmount(int steps)
+	{
+		currentPiece.position += steps;
+
+		if (GoalReached (currentPiece.position)) {
+			currentPiece.position = 99;
+		}
+		if (currentPiece.position < 0) {
+			currentPiece.position = 0;
+		}
+
+		currentPiece.UpdatePosition (currentPiece.position);
+		camera.FollowTarget ();
 	}
 
 	private void CheckForEvent() {
@@ -142,16 +165,25 @@ public class MovePiece : MonoBehaviour {
 				Chance chance = currentPiece.currentTile.GetComponent<Chance> ();
 				int effect = Random.Range (0, (int)Effect.treasure + 1);
 				//Debug.Log (effect.ToString());
+				chance.GetMovement (this);
 				chance.ExecuteEffect (effect);
 			}
 		}
 	}
-
+		
 	public void EndTurn() {
-		if (isMoved) {
+		if (isMoved || currentPiece.status == Status.Stunned) {
+			WaitForStun ();
+
 			isMoved = false;
 			turnEnds = true;
 		}
+
+		/*
+		if (currentPiece.status == Status.Stunned) {
+			WaitForStun ();
+		}
+		*/
 	}
 
 	private void UpdatePlayerInfo() {
@@ -163,9 +195,22 @@ public class MovePiece : MonoBehaviour {
 		RollDice ();
 	}
 
-	/*
-	private void BotEndTurn() {
-
+	private bool GoalReached(int pos)
+	{
+		if (pos > 99) {
+			return true;
+		} else
+			return false;
 	}
-	*/
+
+	private void WaitForStun()
+	{
+		currentPiece.statusDuration--;
+		if (currentPiece.statusDuration < 0) {
+			currentPiece.statusDuration = 0;
+			currentPiece.status = Status.Normal;
+		} else {
+			return;
+		}
+	}
 }

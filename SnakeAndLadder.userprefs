@@ -1,11 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AvatarPanel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Chance.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerSlot.cs" Line="26" Column="15" />
-      <File FileName="Assets\Scripts\AvatarPanel.cs" Line="34" Column="9" />
-      <File FileName="Assets\Scripts\AvatarLoader.cs" Line="8" Column="4" />
+      <File FileName="Assets\Scripts\PlayerSlot.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\AvatarPanel.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\AvatarLoader.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Managers\DataManagement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Dice\MovePiece.cs" Line="209" Column="36" />
+      <File FileName="Assets\Scripts\Chance.cs" Line="44" Column="15" />
+      <File FileName="Assets\Scripts\Board\Tile.cs" Line="11" Column="8" />
+      <File FileName="Assets\Scripts\Player\Piece.cs" Line="58" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
