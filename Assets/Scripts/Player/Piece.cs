@@ -7,6 +7,7 @@ public enum Status
 	Normal,
 	Stunned,
 	Slow,
+	Drain,
 }
 
 public class Piece : MonoBehaviour, IComparable<Piece> {
@@ -16,7 +17,7 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 	public int position;
 	public int turnOrder;
 	public int statusDuration = 0;
-
+	public int coin;
 	public string name;
 	public Sprite avatar;
 	public Status status = Status.Normal;
@@ -44,7 +45,6 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 
 		if (currentTile == null) {
 			currentTile = gameBoard.tileList[0];
-			//UpdatePosition ();
 		}
 	}
 
@@ -56,20 +56,9 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 	public void UpdatePosition(int n) {
 		Vector3 target = gameBoard.tileList [n].transform.position;
 
-		//Vector3 direction = target - this.transform.position;
-
-		/*
-		if (transform.position.x > target.x && target.x != 0) {
-			spr.flipX = true;
-		} else if (transform.position.x < target.x) {
-			spr.flipX = false;
-		}
-		*/
-
 		this.transform.position = target;
 
 		currentTile = gameBoard.tileList [n];
-		//position = currentTile.tileNum;
 	}
 
 	public int CompareTo(Piece piece){

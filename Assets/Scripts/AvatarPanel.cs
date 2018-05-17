@@ -45,7 +45,6 @@ public class AvatarPanel : MonoBehaviour {
 				}
 			}
 		}
-			
 	}
 
 	public void ToggleAvatarButton(bool isAble)

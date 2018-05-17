@@ -61,10 +61,7 @@ public class MovePiece : MonoBehaviour {
 			currentPiece = gameManager.playerList [turn];
 			currentPiece.spr.sortingOrder = 1;
 
-			WaitForStun ();
-
 			camera.target = currentPiece.transform;
-			//UpdatePlayerInfo ();
 
 			diceButton.interactable = true;
 			turnEnds = false;
@@ -85,8 +82,6 @@ public class MovePiece : MonoBehaviour {
 
 	private IEnumerator Move() {
 		if (currentPiece.status == Status.Stunned) {
-			//WaitForStun ();
-			Debug.Log ("Still stunned");
 		} else {
 			endTurnButton.interactable = false;
 
@@ -105,7 +100,6 @@ public class MovePiece : MonoBehaviour {
 
 				currentPiece.position++;
 				target++;
-				//Debug.Log (currentPiece.ToString() + "| Target: " + target);
 
 				if (GoalReached (target)) {
 					target = 99;
@@ -143,20 +137,17 @@ public class MovePiece : MonoBehaviour {
 		if (currentPiece.currentTile == gameBoard.tileList [gameBoard.tileList.Count-1]) {
 			gameManager.GameIsOver = true;
 			gameManager.winner = currentPiece;
-			Debug.Log ("Winner: " + gameManager.winner);
 			return;
 		}
 
 		if (currentPiece.currentTile.head != null) {
 			if (currentPiece.currentTile.head.type == TileType.Snake || currentPiece.currentTile.head.type == TileType.Ladder) {
-				Debug.Log ("Ladder/Snake");
 				currentPiece.currentTile = currentPiece.currentTile.connectedTile;
 				currentPiece.UpdatePosition ();
 			}
 			return;
 		} else {
 			if (currentPiece.currentTile.type == TileType.Chance) {
-				Debug.Log ("Chance");
 
 				if (currentPiece.currentTile.chance == null) {
 					return;
@@ -164,7 +155,6 @@ public class MovePiece : MonoBehaviour {
 
 				Chance chance = currentPiece.currentTile.GetComponent<Chance> ();
 				int effect = Random.Range (0, (int)Effect.treasure + 1);
-				//Debug.Log (effect.ToString());
 				chance.GetMovement (this);
 				chance.ExecuteEffect (effect);
 			}
@@ -173,22 +163,36 @@ public class MovePiece : MonoBehaviour {
 		
 	public void EndTurn() {
 		if (isMoved || currentPiece.status == Status.Stunned) {
-			WaitForStun ();
+			WaitForStatus ();
 
 			isMoved = false;
 			turnEnds = true;
 		}
-
-		/*
-		if (currentPiece.status == Status.Stunned) {
-			WaitForStun ();
-		}
-		*/
 	}
 
 	private void UpdatePlayerInfo() {
 		gameUI.playerName.text = currentPiece.name;
 		gameUI.playerSpriteImage.sprite = currentPiece.spr.sprite;
+		gameUI.coinText.text = currentPiece.coin.ToString ();
+
+		switch (currentPiece.status) {
+		case Status.Normal:
+			gameUI.statusText.text = "-";
+			gameUI.statusText.color = Color.white;
+			break;
+		case Status.Slow:
+			gameUI.statusText.text = "SLOW (" + currentPiece.statusDuration.ToString() + ")";
+			gameUI.statusText.color = Color.blue;
+			break;
+		case Status.Stunned:
+			gameUI.statusText.text = "STUN (" + currentPiece.statusDuration.ToString() + ")";
+			gameUI.statusText.color = Color.yellow;
+			break;
+		case Status.Drain:
+			gameUI.statusText.text = "DRAIN (" + currentPiece.statusDuration.ToString() + ")";
+			gameUI.statusText.color = Color.green;
+			break;
+		}
 	}
 
 	private void BotMove() {
@@ -203,10 +207,10 @@ public class MovePiece : MonoBehaviour {
 			return false;
 	}
 
-	private void WaitForStun()
+	private void WaitForStatus()
 	{
 		currentPiece.statusDuration--;
-		if (currentPiece.statusDuration < 0) {
+		if (currentPiece.statusDuration <= 0) {
 			currentPiece.statusDuration = 0;
 			currentPiece.status = Status.Normal;
 		} else {

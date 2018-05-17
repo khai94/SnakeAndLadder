@@ -17,7 +17,6 @@ public class PlayerSlot : MonoBehaviour {
 	void Start()
 	{
 		nameField = GetComponentInChildren<InputField> ();
-		//avatarImage = GetComponentInChildren<Image> ();
 		botToggle = GetComponentInChildren<Toggle> ();
 		avatarPanel = GameObject.Find ("Avatar Panel").GetComponent<AvatarPanel> ();
 		SetAll ();

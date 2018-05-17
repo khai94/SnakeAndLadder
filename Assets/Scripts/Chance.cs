@@ -13,6 +13,12 @@ public class Chance : MonoBehaviour {
 	public Effect effect;
 
 	private MovePiece move;
+	private UISettings gameUI;
+
+	void Start ()
+	{
+		gameUI = GameObject.Find ("UIManager").GetComponent<UISettings> ();
+	}
 
 	public void GetMovement(MovePiece movement)
 	{
@@ -21,39 +27,43 @@ public class Chance : MonoBehaviour {
 
 	public void ExecuteEffect(int i)
 	{
+		gameUI.eventPanel.gameObject.SetActive (true);
+		gameUI.eventTitleText.text = "CHANCE!";
+
 		effect = (Effect) i;
 
 		switch (effect) {
 		case Effect.backward:
 			move.MoveAmount (Random.Range (-4, -1));
-			Debug.Log ("Moved backward");
+			gameUI.eventDescText.text = "You are pushed back a few tiles away!";
 			break;
 		
 		case Effect.forward:
 			move.MoveAmount (Random.Range (1, 4));
-			Debug.Log ("Moved forward");
+			gameUI.eventDescText.text = "You jumped a few tiles ahead!";
 			break;
 		
 		case Effect.stun:
 			move.currentPiece.status = Status.Stunned;
 			move.currentPiece.statusDuration = Random.Range (2, 4);
-			Debug.Log ("Stunned for " + move.currentPiece.statusDuration + " turns.");
+			gameUI.eventDescText.text = "You are stunned for a few turns!";
 			break;
 
 		case Effect.teleport:
 			int target;
 			do {
 				target = Random.Range (10, 80);
-			} while (target != move.currentPiece.position);
+			} while (target == move.currentPiece.position);
 
 			move.currentPiece.position = target;
 			move.currentPiece.UpdatePosition (target);
-			Debug.Log ("Teleported to tile " + move.currentPiece.position);
+			gameUI.eventDescText.text = "You are magically teleported to a new location!";
 			break;
 
 		case Effect.treasure:
 			int value = Random.Range (1, 6) * 100;
-			Debug.Log ("Found " + value.ToString() + " coins.");
+			move.currentPiece.coin += value;
+			gameUI.eventDescText.text = "You found some hidden treasure!";
 			break;
 		}
 	}

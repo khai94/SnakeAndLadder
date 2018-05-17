@@ -15,8 +15,7 @@ public class Tile : MonoBehaviour, IComparable<Tile>{
 	private TextMesh tileNumberText;
 	public TileType type;
 	public int tileNum;
-	//public int x, y;
-	//private bool isConnected = false;	// is the tile already connected to another Tile?
+
 	public Tile connectedTile;			// store info of the connected Tile
 	public Tile head;					// the Head tile is where the snake/ladder trigger should occur
 	public Chance chance;

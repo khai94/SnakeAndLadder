@@ -42,7 +42,7 @@ public class DataManagement : MonoBehaviour {
 			slotList.Add (nPlayer);
 		}
 
-		slotList.ForEach (DisplayList);
+		//slotList.ForEach (DisplayList);
 	}
 
 	private void DisplayList(Player player)

@@ -5,8 +5,15 @@ using UnityEngine.UI;
 public class UISettings : MonoBehaviour {
 	public Text playerName;
 	public Text winnerName;
+	public Text coinText;
+	public Text statusText;
+	public Text eventTitleText;
+	public Text eventDescText;
 	public Image playerSpriteImage;
+
 	public GameObject gameOverPanel;
+	public GameObject eventPanel;
+
 	private GameSettings gameManager;
 
 	// Use this for initialization
@@ -16,6 +23,7 @@ public class UISettings : MonoBehaviour {
 			gameManager = go.GetComponent<GameSettings> ();
 		}
 		gameOverPanel.SetActive (false);
+		eventPanel.SetActive (false);
 	}
 	
 	// Update is called once per frame
