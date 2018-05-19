@@ -19,7 +19,7 @@ public class MovePiece : MonoBehaviour {
 	private GameSettings gameManager;
 	private BoardSettings gameBoard;
 	private UISettings gameUI;
-	private CameraView camera;
+	private CameraView cam;
 
 	// Use this for initialization
 	void Awake () {
@@ -30,7 +30,7 @@ public class MovePiece : MonoBehaviour {
 		gameBoard = go.GetComponent<BoardSettings> ();
 		go = GameObject.Find ("UIManager");
 		gameUI = go.GetComponent<UISettings> ();
-		camera = Camera.main.gameObject.GetComponent<CameraView> ();
+		cam = Camera.main.gameObject.GetComponent<CameraView> ();
 	}
 
 	void Start () {
@@ -42,7 +42,7 @@ public class MovePiece : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (gameUI.playerName.name != currentPiece.name) {
+		if (gameUI.playerName.text != currentPiece.username) {
 			UpdatePlayerInfo ();
 		}
 
@@ -61,7 +61,7 @@ public class MovePiece : MonoBehaviour {
 			currentPiece = gameManager.playerList [turn];
 			currentPiece.spr.sortingOrder = 1;
 
-			camera.target = currentPiece.transform;
+			cam.target = currentPiece.transform;
 
 			diceButton.interactable = true;
 			turnEnds = false;
@@ -106,7 +106,7 @@ public class MovePiece : MonoBehaviour {
 				}
 
 				currentPiece.UpdatePosition (target);
-				camera.FollowTarget ();
+				cam.FollowTarget ();
 				yield return new WaitForSeconds (1f);
 			}
 			CheckForEvent ();
@@ -129,7 +129,7 @@ public class MovePiece : MonoBehaviour {
 		}
 
 		currentPiece.UpdatePosition (currentPiece.position);
-		camera.FollowTarget ();
+		cam.FollowTarget ();
 	}
 
 	private void CheckForEvent() {
@@ -154,11 +154,13 @@ public class MovePiece : MonoBehaviour {
 				}
 
 				Chance chance = currentPiece.currentTile.GetComponent<Chance> ();
-				int effect = Random.Range (0, (int)Effect.treasure + 1);
+				int effect = Random.Range (0, (int)Effect.Treasure + 1);
 				chance.GetMovement (this);
 				chance.ExecuteEffect (effect);
 			}
 		}
+
+		UpdatePlayerInfo ();
 	}
 		
 	public void EndTurn() {
@@ -171,13 +173,29 @@ public class MovePiece : MonoBehaviour {
 	}
 
 	private void UpdatePlayerInfo() {
-		gameUI.playerName.text = currentPiece.name;
+		gameUI.playerName.text = currentPiece.username;
 		gameUI.playerSpriteImage.sprite = currentPiece.spr.sprite;
 		gameUI.coinText.text = currentPiece.coin.ToString ();
+		CheckPlayerStatus ();
+	}
 
+	private void BotMove() {
+		RollDice ();
+	}
+
+	private bool GoalReached(int pos)
+	{
+		if (pos > 99) {
+			return true;
+		} else
+			return false;
+	}
+
+	private void CheckPlayerStatus()
+	{
 		switch (currentPiece.status) {
 		case Status.Normal:
-			gameUI.statusText.text = "-";
+			gameUI.statusText.text = "";
 			gameUI.statusText.color = Color.white;
 			break;
 		case Status.Slow:
@@ -193,18 +211,6 @@ public class MovePiece : MonoBehaviour {
 			gameUI.statusText.color = Color.green;
 			break;
 		}
-	}
-
-	private void BotMove() {
-		RollDice ();
-	}
-
-	private bool GoalReached(int pos)
-	{
-		if (pos > 99) {
-			return true;
-		} else
-			return false;
 	}
 
 	private void WaitForStatus()

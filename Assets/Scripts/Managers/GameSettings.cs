@@ -23,7 +23,7 @@ public class GameSettings : MonoBehaviour {
 		data = GameObject.FindGameObjectWithTag ("DataManager").GetComponent<DataManagement> ();
 
 		for (int i = 0; i < playerList.Count; i++) {
-			playerList [i].name = data.slotList [i].name;
+			playerList [i].username = data.slotList [i].name;
 			playerList [i].avatar = data.slotList [i].avatar;
 			playerList [i].isBot = data.slotList [i].isBot;
 			playerList [i].gameObject.SetActive(data.slotList [i].isActive);

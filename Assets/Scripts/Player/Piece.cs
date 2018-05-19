@@ -18,7 +18,7 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 	public int turnOrder;
 	public int statusDuration = 0;
 	public int coin;
-	public string name;
+	public string username;
 	public Sprite avatar;
 	public Status status = Status.Normal;
 

@@ -8,7 +8,7 @@ public class PlayerSlot : MonoBehaviour {
 	public Image avatarImage;
 	public Toggle botToggle;
 
-	public string name;
+	public string username;
 	public Sprite avatar;
 	public bool isBot;
 
@@ -35,7 +35,7 @@ public class PlayerSlot : MonoBehaviour {
 
 	public void SetName()
 	{
-		name = nameField.text;
+		username = nameField.text;
 	}
 
 	public void SetAvatar()

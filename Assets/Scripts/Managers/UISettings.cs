@@ -29,7 +29,7 @@ public class UISettings : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (gameManager.GameIsOver) {
-			winnerName.text = gameManager.winner.name.ToString();
+			winnerName.text = gameManager.winner.username.ToString();
 			gameOverPanel.SetActive (true);
 		}
 	}

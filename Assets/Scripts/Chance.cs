@@ -4,11 +4,18 @@ using UnityEngine;
 
 public enum Effect
 {
-	forward, backward, stun, teleport, treasure
+	Forward, 
+	Backward, 
+	Stun, 
+	Teleport, 
+	Treasure,
+	Confuse,
+	Slow,
+	Drain
 }
 
 public class Chance : MonoBehaviour {
-	public string name;
+	public string title;
 	public string description;
 	public Effect effect;
 
@@ -33,23 +40,23 @@ public class Chance : MonoBehaviour {
 		effect = (Effect) i;
 
 		switch (effect) {
-		case Effect.backward:
+		case Effect.Backward:
 			move.MoveAmount (Random.Range (-4, -1));
 			gameUI.eventDescText.text = "You are pushed back a few tiles away!";
 			break;
 		
-		case Effect.forward:
+		case Effect.Forward:
 			move.MoveAmount (Random.Range (1, 4));
 			gameUI.eventDescText.text = "You jumped a few tiles ahead!";
 			break;
 		
-		case Effect.stun:
+		case Effect.Stun:
 			move.currentPiece.status = Status.Stunned;
 			move.currentPiece.statusDuration = Random.Range (2, 4);
 			gameUI.eventDescText.text = "You are stunned for a few turns!";
 			break;
 
-		case Effect.teleport:
+		case Effect.Teleport:
 			int target;
 			do {
 				target = Random.Range (10, 80);
@@ -60,11 +67,17 @@ public class Chance : MonoBehaviour {
 			gameUI.eventDescText.text = "You are magically teleported to a new location!";
 			break;
 
-		case Effect.treasure:
+		case Effect.Treasure:
 			int value = Random.Range (1, 6) * 100;
 			move.currentPiece.coin += value;
 			gameUI.eventDescText.text = "You found some hidden treasure!";
 			break;
+
+			// confuse
+
+			// slow
+
+			// drain coins
 		}
 	}
 }

@@ -34,7 +34,7 @@ public class DataManagement : MonoBehaviour {
 
 		foreach (PlayerSlot player in playerCount.playerArray) {
 			Player nPlayer;
-			nPlayer.name = player.name;
+			nPlayer.name = player.username;
 			nPlayer.avatar = player.avatar;
 			nPlayer.isBot = player.isBot;
 			nPlayer.isActive = player.gameObject.activeSelf;
