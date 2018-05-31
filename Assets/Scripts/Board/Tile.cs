@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 
 public enum TileType {
 	Normal,
@@ -12,7 +10,7 @@ public enum TileType {
 };
 
 public class Tile : MonoBehaviour, IComparable<Tile>{
-	private TextMesh tileNumberText;
+	public TextMesh tileNumberText;
 	public TileType type;
 	public int tileNum;
 
@@ -41,7 +39,7 @@ public class Tile : MonoBehaviour, IComparable<Tile>{
 		tileNumberText.text = tileNum.ToString ();
 	}
 
-	void ResetTileType(){
+	public void ResetTileType(){
 		switch (type) {
 		case TileType.Normal:
 			break;

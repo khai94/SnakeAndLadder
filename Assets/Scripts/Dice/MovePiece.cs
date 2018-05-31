@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -89,26 +88,64 @@ public class MovePiece : MonoBehaviour {
 
 			// randomize dice face sprite before actually getting the value to get the "rolling" effect.
 			for (int i = 0; i < 5; i++) {
-				dice.value = Random.Range (1, 7);
+				dice.value = Random.Range (1, 7) - currentPiece.moveModifier;
+                if (dice.value <= 0) dice.value = 1;
 				diceButton.image.sprite = dice.diceFaces [dice.value - 1];
 				yield return new WaitForSeconds (0.2f);
 			}
 
-			for (int i = 0; i < dice.value; i++) {
-				if (gameManager.GameIsOver)
-					break;
+            if(currentPiece.status == Status.Confused)
+            {
+                int rand;
+                do
+                {
+                    rand = Random.Range(-1, 2);
+                    Debug.Log("confuse value: " + rand);
+                } while (rand == 0);
+                dice.value *= rand;
+                Debug.Log("Dice value: " + dice.value);
+            }
 
-				currentPiece.position++;
-				target++;
+            if (dice.value > 0)
+            {
+                for (int i = 0; i < dice.value; i++)
+                {
+                    if (gameManager.GameIsOver)
+                        break;
 
-				if (GoalReached (target)) {
-					target = 99;
-				}
+                    currentPiece.position++;
+                    target++;
 
-				currentPiece.UpdatePosition (target);
-				cam.FollowTarget ();
-				yield return new WaitForSeconds (1f);
-			}
+                    if (GoalReached(target))
+                    {
+                        target = 99;
+                    }
+
+                    currentPiece.UpdatePosition(target);
+                    cam.FollowTarget();
+                    yield return new WaitForSeconds(1f);
+                }
+            }
+            else if(dice.value < 0)
+            {
+                for (int i = dice.value; i < 0; i++)
+                {
+                    if (gameManager.GameIsOver)
+                        break;
+
+                    currentPiece.position--;
+                    target--;
+
+                    if (target <= 0)
+                    {
+                        target = 0;
+                    }
+
+                    currentPiece.UpdatePosition(target);
+                    cam.FollowTarget();
+                    yield return new WaitForSeconds(1f);
+                }
+            }
 			CheckForEvent ();
 		}
 
@@ -149,9 +186,11 @@ public class MovePiece : MonoBehaviour {
 		} else {
 			if (currentPiece.currentTile.type == TileType.Chance) {
 
+                
 				if (currentPiece.currentTile.chance == null) {
 					return;
 				}
+                
 
 				Chance chance = currentPiece.currentTile.GetComponent<Chance> ();
 				int effect = Random.Range (0, (int)Effect.Treasure + 1);
@@ -193,25 +232,29 @@ public class MovePiece : MonoBehaviour {
 
 	private void CheckPlayerStatus()
 	{
+        int duration = currentPiece.statusDuration;
 		switch (currentPiece.status) {
-		case Status.Normal:
-			gameUI.statusText.text = "";
-			gameUI.statusText.color = Color.white;
-			break;
-		case Status.Slow:
-			gameUI.statusText.text = "SLOW (" + currentPiece.statusDuration.ToString() + ")";
-			gameUI.statusText.color = Color.blue;
-			break;
-		case Status.Stunned:
-			gameUI.statusText.text = "STUN (" + currentPiece.statusDuration.ToString() + ")";
-			gameUI.statusText.color = Color.yellow;
-			break;
-		case Status.Drain:
-			gameUI.statusText.text = "DRAIN (" + currentPiece.statusDuration.ToString() + ")";
-			gameUI.statusText.color = Color.green;
-			break;
-		}
-	}
+		    case Status.Normal:
+			    gameUI.statusText.text = "";
+			    gameUI.statusText.color = Color.white;
+			    break;
+
+		    case Status.Slow:
+			    gameUI.statusText.text = "SLOW (" + duration + ")";
+			    gameUI.statusText.color = Color.blue;
+			    break;
+
+		    case Status.Stunned:
+			    gameUI.statusText.text = "STUN (" + duration + ")";
+			    gameUI.statusText.color = Color.yellow;
+			    break;
+
+            case Status.Confused:
+                gameUI.statusText.text = "CONFUSE (" + duration + ")";
+                gameUI.statusText.color = Color.green;
+                break;
+        }
+    }
 
 	private void WaitForStatus()
 	{

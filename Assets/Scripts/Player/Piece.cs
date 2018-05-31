@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System;
-using System.Collections;
 
 public enum Status
 {
@@ -8,6 +7,7 @@ public enum Status
 	Stunned,
 	Slow,
 	Drain,
+    Confused
 }
 
 public class Piece : MonoBehaviour, IComparable<Piece> {
@@ -18,6 +18,7 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 	public int turnOrder;
 	public int statusDuration = 0;
 	public int coin;
+    public int moveModifier = 0;
 	public string username;
 	public Sprite avatar;
 	public Status status = Status.Normal;
