@@ -40,51 +40,57 @@ public class Tile : MonoBehaviour, IComparable<Tile>{
 	}
 
 	public void ResetTileType(){
-		switch (type) {
-		case TileType.Normal:
-			break;
+        tileNumberText = GetComponentInChildren<TextMesh>();
+        switch (type) {
+		    case TileType.Normal:
+			    break;
 
-		case TileType.Ladder:
-			if (connectedTile.connectedTile == null || connectedTile.connectedTile != this.GetComponent<Tile>()) {
-				connectedTile.connectedTile = this.GetComponent<Tile> ();
-			}
+		    case TileType.Ladder:
+                tileNumberText.color = Color.green;
+                connectedTile.type = TileType.Ladder;
 
-			head = this.GetComponent<Tile>();
+			    if (connectedTile.connectedTile == null || connectedTile.connectedTile != this.GetComponent<Tile>()) {
+				    connectedTile.connectedTile = this.GetComponent<Tile> ();
+			    }
+			    head = this.GetComponent<Tile>();
 
-			if (type == TileType.Ladder) {
-				// if connected tile's number is lower than this tile's number
-				if (tileNum > connectedTile.tileNum) {
-					connectedTile.head = this.GetComponent<Tile>();		// trigger is the lower of the two
-					head = null;										// the other tile doesn't have a head
-				}
-			}
-			break;
+			    if (type == TileType.Ladder) {
+				    // if connected tile's number is lower than this tile's number
+				    if (tileNum > connectedTile.tileNum) {
+					    connectedTile.head = this.GetComponent<Tile>();		// trigger is the lower of the two
+					    head = null;										// the other tile doesn't have a head
+				    }
+			    }
+			    break;
 
-		case TileType.Snake:
-			if (connectedTile.connectedTile == null || connectedTile.connectedTile != this.GetComponent<Tile>()) {
-				connectedTile.connectedTile = this.GetComponent<Tile> ();
-			}
+		    case TileType.Snake:
+                tileNumberText.color = Color.red;
+                connectedTile.type = TileType.Snake;
 
-			head = this.GetComponent<Tile>();
+			    if (connectedTile.connectedTile == null || connectedTile.connectedTile != this.GetComponent<Tile>()) {
+				    connectedTile.connectedTile = this.GetComponent<Tile> ();
+			    }
 
-			if (type == TileType.Snake) {
-				// if connected tile's number is higher than this tile's number
-				if (tileNum < connectedTile.tileNum) {
-					connectedTile.head = this.GetComponent<Tile>();		// trigger is the higher of the two
-					head = null;										// the other tile doesn't have a head
-				}
-			}
-			break;
+			    head = this.GetComponent<Tile>();
 
-		case TileType.Chance:
-			chance = gameObject.AddComponent (typeof(Chance)) as Chance;
-			break;
+			    if (type == TileType.Snake) {
+				    // if connected tile's number is higher than this tile's number
+				    if (tileNum < connectedTile.tileNum) {
+					    connectedTile.head = this.GetComponent<Tile>();		// trigger is the higher of the two
+					    head = null;										// the other tile doesn't have a head
+				    }
+			    }
+			    break;
 
-		case TileType.Game:
-			break;
+		    case TileType.Chance:
+			    chance = gameObject.AddComponent (typeof(Chance)) as Chance;
+			    break;
 
-		default:
-			break;
+		    case TileType.Game:
+			    break;
+
+		    default:
+			    break;
 		}
 	}
 

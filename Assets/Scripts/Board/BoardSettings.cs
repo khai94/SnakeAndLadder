@@ -23,12 +23,12 @@ public class BoardSettings : MonoBehaviour {
 
         while (chanceCount < 10)
         {
-            Tile t = tileList[Random.Range(1, 91)];
+            Tile t = tileList[Random.Range(10, 91)];
 
             if (t.type == TileType.Normal)
             {
                 t.type = TileType.Chance;
-                t.tileNumberText.color = Color.cyan;
+                t.tileNumberText.color = Color.blue;
                 t.ResetTileType();
                 chanceCount++;
                 Debug.Log(t.type.ToString());
