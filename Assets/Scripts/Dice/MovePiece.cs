@@ -41,9 +41,7 @@ public class MovePiece : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (gameUI.playerName.text != currentPiece.username) {
-			UpdatePlayerInfo ();
-		}
+        UpdatePlayerInfo();
 
 		if (currentPiece.isBot && isMoved) {
 			EndTurn ();
