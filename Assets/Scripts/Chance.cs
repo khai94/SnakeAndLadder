@@ -1,17 +1,5 @@
 ﻿using UnityEngine;
 
-public enum Effect
-{
-    Backward,
-    Confuse,
-    Drain,
-    Forward,
-    Stun,
-    Slow,
-    Teleport,
-    Treasure
-}
-
 public class Chance : MonoBehaviour {
 	public string title;
 	public string description;
@@ -90,6 +78,10 @@ public class Chance : MonoBehaviour {
                 move.currentPiece.coin -= value;
                 if (move.currentPiece.coin < 0) move.currentPiece.coin = 0;
                 gameUI.eventDescText.text = "You lost some of your coins!";
+                break;
+
+            default:
+                ExecuteEffect(i);
                 break;
 		}
 	}

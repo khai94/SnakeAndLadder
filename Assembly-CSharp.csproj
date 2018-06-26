@@ -65,9 +65,17 @@
     <Compile Include="Assets\Scripts\Board\BoardSettings.cs" />
     <Compile Include="Assets\Scripts\Board\Tile.cs" />
     <Compile Include="Assets\Scripts\CameraMove.cs" />
+    <Compile Include="Assets\Scripts\Card\BackwardCard.cs" />
+    <Compile Include="Assets\Scripts\Card\BlizzardCard.cs" />
+    <Compile Include="Assets\Scripts\Card\Card.cs" />
+    <Compile Include="Assets\Scripts\Card\DeckOfCards.cs" />
+    <Compile Include="Assets\Scripts\Card\ElevatorCard.cs" />
+    <Compile Include="Assets\Scripts\Card\ElevatorMalfunctionCard.cs" />
+    <Compile Include="Assets\Scripts\Card\ParalyzeCard.cs" />
     <Compile Include="Assets\Scripts\Chance.cs" />
     <Compile Include="Assets\Scripts\Dice\Dice.cs" />
     <Compile Include="Assets\Scripts\Dice\MovePiece.cs" />
+    <Compile Include="Assets\Scripts\Effects.cs" />
     <Compile Include="Assets\Scripts\Managers\CameraView.cs" />
     <Compile Include="Assets\Scripts\Managers\DataManagement.cs" />
     <Compile Include="Assets\Scripts\Managers\GameSettings.cs" />
