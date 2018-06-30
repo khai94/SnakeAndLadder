@@ -19,11 +19,11 @@ public class DataManagement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		if (data) {
-			Destroy (this);
+			Destroy (this.gameObject);
 			Debug.Log ("Destroy");
 		} else {
 			data = GameObject.FindGameObjectWithTag ("DataManager");
-			DontDestroyOnLoad (this);
+			DontDestroyOnLoad (this.gameObject);
 			Debug.Log ("Don't destroy");
 		}
 	}

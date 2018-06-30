@@ -3,20 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class BlizzardCard : Card{
-    public override void ExecuteEffect(int i)
+    public override void ExecuteEffect(Effect e)
     {
-        effect = (Effect)i;
-
-        switch (effect)
-        {
-            case Effect.Slow:
-                Debug.Log("Slow");
-                break;
-        }
+        Debug.Log("Slow");
     }
 
-    
-	public class StatusEffect {
+
+    public class StatusEffect {
 
 		public float time;
 		public string name;

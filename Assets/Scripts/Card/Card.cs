@@ -7,5 +7,5 @@ public abstract class Card : MonoBehaviour {
     public string description;
     public Effect effect;
 
-    public abstract void ExecuteEffect(int i);
+    public abstract void ExecuteEffect(Effect e);
 }

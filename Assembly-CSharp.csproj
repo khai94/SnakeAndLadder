@@ -60,6 +60,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\RPGPuzzleGameMusic\Scripts\MusicController.cs" />
+    <Compile Include="Assets\Scripts\Audio.cs" />
+    <Compile Include="Assets\Scripts\AudioSetting.cs" />
     <Compile Include="Assets\Scripts\AvatarLoader.cs" />
     <Compile Include="Assets\Scripts\AvatarPanel.cs" />
     <Compile Include="Assets\Scripts\Board\BoardSettings.cs" />
