@@ -6,6 +6,7 @@ public enum Effect
     Downward,
     Drain,
     Forward,
+    Reflect,
     Stun,
     Slow,
     Teleport,
