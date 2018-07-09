@@ -337,6 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03706234a14e294eb33fc21a3c09ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicToggle: {fileID: 41938919}
+  sfxToggle: {fileID: 579604095}
 --- !u!114 &285276756 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000013931039164, guid: 7e1686d38c3955d47a72d45afa860f3d,
@@ -1013,6 +1015,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 262840432}
+        m_MethodName: SaveData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 285276756}
         m_MethodName: ChangeScene
         m_Mode: 3

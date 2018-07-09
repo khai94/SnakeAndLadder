@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -14,18 +13,21 @@ public struct Player
 public class DataManagement : MonoBehaviour {
 	public List<Player> slotList;
 	public PlayerCount playerCount;
-	public static GameObject data;
+	public static DataManagement instance;
 
 	// Use this for initialization
 	void Start () {
-		if (data) {
-			Destroy (this.gameObject);
-			Debug.Log ("Destroy");
-		} else {
-			data = GameObject.FindGameObjectWithTag ("DataManager");
-			DontDestroyOnLoad (this.gameObject);
-			Debug.Log ("Don't destroy");
-		}
+
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
 	}
 
 	public void SetPlayerSlot()

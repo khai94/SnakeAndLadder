@@ -59,13 +59,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Audio.cs" />
-    <Compile Include="Assets\Scripts\AudioSetting.cs" />
-    <Compile Include="Assets\Scripts\AvatarLoader.cs" />
-    <Compile Include="Assets\Scripts\AvatarPanel.cs" />
+    <Compile Include="Assets\Scripts\Audio\Audio.cs" />
+    <Compile Include="Assets\Scripts\Audio\AudioSetting.cs" />
     <Compile Include="Assets\Scripts\Board\BoardSettings.cs" />
+    <Compile Include="Assets\Scripts\Board\Chance.cs" />
+    <Compile Include="Assets\Scripts\Board\Effects.cs" />
     <Compile Include="Assets\Scripts\Board\Tile.cs" />
-    <Compile Include="Assets\Scripts\CameraMove.cs" />
+    <Compile Include="Assets\Scripts\Camera\CameraMove.cs" />
+    <Compile Include="Assets\Scripts\Camera\CameraView.cs" />
     <Compile Include="Assets\Scripts\Card\BackwardCard.cs" />
     <Compile Include="Assets\Scripts\Card\BlizzardCard.cs" />
     <Compile Include="Assets\Scripts\Card\Card.cs" />
@@ -76,18 +77,18 @@
     <Compile Include="Assets\Scripts\Card\ParalyzeCard.cs" />
     <Compile Include="Assets\Scripts\Card\ShieldCard.cs" />
     <Compile Include="Assets\Scripts\Card\SwapCard.cs" />
-    <Compile Include="Assets\Scripts\Chance.cs" />
     <Compile Include="Assets\Scripts\Dice\Dice.cs" />
     <Compile Include="Assets\Scripts\Dice\MovePiece.cs" />
-    <Compile Include="Assets\Scripts\Effects.cs" />
-    <Compile Include="Assets\Scripts\Managers\CameraView.cs" />
+    <Compile Include="Assets\Scripts\Lobby\AvatarLoader.cs" />
+    <Compile Include="Assets\Scripts\Lobby\AvatarPanel.cs" />
+    <Compile Include="Assets\Scripts\Lobby\PlayerCount.cs" />
+    <Compile Include="Assets\Scripts\Lobby\PlayerSlot.cs" />
+    <Compile Include="Assets\Scripts\Managers\Data.cs" />
     <Compile Include="Assets\Scripts\Managers\DataManagement.cs" />
     <Compile Include="Assets\Scripts\Managers\GameSettings.cs" />
     <Compile Include="Assets\Scripts\Managers\SceneManagement.cs" />
     <Compile Include="Assets\Scripts\Managers\UISettings.cs" />
     <Compile Include="Assets\Scripts\Player\Piece.cs" />
-    <Compile Include="Assets\Scripts\PlayerCount.cs" />
-    <Compile Include="Assets\Scripts\PlayerSlot.cs" />
     <None Include="Assets\Fonts\bradybunch.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/khair/Desktop/UnityProjects/SnakeAndLadder/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

@@ -916,22 +916,32 @@ Prefab:
     - target: {fileID: 82917767396224280, guid: fed2cdad2754aa34fad88d95868199c3,
         type: 2}
       propertyPath: Loop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 82182496490942366, guid: fed2cdad2754aa34fad88d95868199c3,
         type: 2}
       propertyPath: m_PlayOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 82182496490942366, guid: fed2cdad2754aa34fad88d95868199c3,
         type: 2}
       propertyPath: Loop
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 82917767396224280, guid: fed2cdad2754aa34fad88d95868199c3,
         type: 2}
       propertyPath: m_PlayOnAwake
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82182496490942366, guid: fed2cdad2754aa34fad88d95868199c3,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 82182496490942366, guid: fed2cdad2754aa34fad88d95868199c3,
+        type: 2}
+      propertyPath: m_Pitch
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fed2cdad2754aa34fad88d95868199c3, type: 2}
