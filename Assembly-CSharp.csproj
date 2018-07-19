@@ -71,10 +71,14 @@
     <Compile Include="Assets\Scripts\Card\BlizzardCard.cs" />
     <Compile Include="Assets\Scripts\Card\Card.cs" />
     <Compile Include="Assets\Scripts\Card\DeckOfCards.cs" />
+    <Compile Include="Assets\Scripts\Card\DoubleDiceCard.cs" />
     <Compile Include="Assets\Scripts\Card\ElevatorCard.cs" />
     <Compile Include="Assets\Scripts\Card\ElevatorMalfunctionCard.cs" />
     <Compile Include="Assets\Scripts\Card\MirrorCard.cs" />
     <Compile Include="Assets\Scripts\Card\ParalyzeCard.cs" />
+    <Compile Include="Assets\Scripts\Card\PlusOneCard.cs" />
+    <Compile Include="Assets\Scripts\Card\PlusTwoCard.cs" />
+    <Compile Include="Assets\Scripts\Card\ReflectCard.cs" />
     <Compile Include="Assets\Scripts\Card\ShieldCard.cs" />
     <Compile Include="Assets\Scripts\Card\SwapCard.cs" />
     <Compile Include="Assets\Scripts\Dice\Dice.cs" />

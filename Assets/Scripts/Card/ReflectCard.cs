@@ -9,7 +9,4 @@ public abstract class ReflectCard : MonoBehaviour
     public Effect effect;
 
     public abstract void ExecuteEffect(Effect e);
-    {
-        Debug.Log("Reflect");
-    }
 }

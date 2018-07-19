@@ -13,7 +13,7 @@ public class DoubleDiceCard : ScriptableObject
 
     public int turnCost;
     public int turn;
-    public Dice;
+    //public Dice;
 
 	public void Print()
     {
