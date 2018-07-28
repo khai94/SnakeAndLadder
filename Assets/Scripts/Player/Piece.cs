@@ -50,16 +50,17 @@ public class Piece : MonoBehaviour, IComparable<Piece> {
 	}
 
 	public void UpdatePosition() {
-		this.transform.position = currentTile.transform.position;
+        //transform.position = Vector3.Lerp(transform.position, currentTile.transform.position, 0.1f);
+        this.transform.position = currentTile.transform.position;
 		position = currentTile.tileNum - 1;
 	}
 
 	public void UpdatePosition(int n) {
 		Vector3 target = gameBoard.tileList [n].transform.position;
+        //transform.position = Vector3.Lerp(transform.position, target, 0.1f);
+        this.transform.position = target;
 
-		this.transform.position = target;
-
-		currentTile = gameBoard.tileList [n];
+        currentTile = gameBoard.tileList [n];
 	}
 
 	public int CompareTo(Piece piece){

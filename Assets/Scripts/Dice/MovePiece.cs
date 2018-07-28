@@ -62,7 +62,7 @@ public class MovePiece : MonoBehaviour {
 
 			diceButton.interactable = true;
 			turnEnds = false;
-
+            gameUI.turnStartPanel.SetActive(true);
 			if (currentPiece.isBot) {
 				BotMove ();
 			}
@@ -76,6 +76,12 @@ public class MovePiece : MonoBehaviour {
 			StartCoroutine (Move ());
 		}
 	}
+    private IEnumerator BotWait()
+    {
+        yield return new WaitForSeconds(2f);
+        gameUI.turnStartPanel.SetActive(false);
+        RollDice();
+    }
 
 	private IEnumerator Move() {
 		if (currentPiece.status == Status.Stunned) {
@@ -120,7 +126,7 @@ public class MovePiece : MonoBehaviour {
                     }
 
                     currentPiece.UpdatePosition(target);
-                    cam.FollowTarget();
+                    //cam.FollowTarget();
                     yield return new WaitForSeconds(1f);
                 }
             }
@@ -140,12 +146,13 @@ public class MovePiece : MonoBehaviour {
                     }
 
                     currentPiece.UpdatePosition(target);
-                    cam.FollowTarget();
+                    //cam.FollowTarget();
                     yield return new WaitForSeconds(1f);
                 }
             }
 			CheckForEvent ();
-		}
+            //yield return new WaitForSeconds(1f);
+        }
 
 		isMoved = true;
 		isMoving = false;
@@ -164,7 +171,7 @@ public class MovePiece : MonoBehaviour {
 		}
 
 		currentPiece.UpdatePosition (currentPiece.position);
-		cam.FollowTarget ();
+		//cam.FollowTarget ();
 	}
 
 	private void CheckForEvent() {
@@ -196,9 +203,10 @@ public class MovePiece : MonoBehaviour {
 				chance.ExecuteEffect (effect);
 			}
 		}
-
-		UpdatePlayerInfo ();
-	}
+        
+        UpdatePlayerInfo ();
+        //cam.FollowTarget();
+    }
 		
 	public void EndTurn() {
 		if (isMoved || currentPiece.status == Status.Stunned) {
@@ -217,7 +225,8 @@ public class MovePiece : MonoBehaviour {
 	}
 
 	private void BotMove() {
-		RollDice ();
+        StartCoroutine(BotWait());
+		//RollDice ();
 	}
 
 	private bool GoalReached(int pos)

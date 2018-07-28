@@ -9,10 +9,12 @@ public class UISettings : MonoBehaviour {
 	public Text statusText;
 	public Text eventTitleText;
 	public Text eventDescText;
+    public Text turnStartText;
 	public Image playerSpriteImage;
 
 	public GameObject gameOverPanel;
 	public GameObject eventPanel;
+    public GameObject turnStartPanel;
 
 	private GameSettings gameManager;
 
@@ -32,5 +34,21 @@ public class UISettings : MonoBehaviour {
 			winnerName.text = gameManager.winner.username.ToString();
 			gameOverPanel.SetActive (true);
 		}
-	}
+
+        if(eventPanel.activeSelf)
+        {
+            if(Input.anyKeyDown)
+            {
+                eventPanel.SetActive(false);
+            }
+        }
+        if (turnStartPanel.activeSelf)
+        {
+            turnStartText.text = playerName.text + "'s turn!";
+            if (Input.anyKeyDown)
+            {
+                turnStartPanel.SetActive(false);
+            }
+        }
+    }
 }

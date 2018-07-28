@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Card\BackwardCard.cs" />
     <Compile Include="Assets\Scripts\Card\BlizzardCard.cs" />
     <Compile Include="Assets\Scripts\Card\Card.cs" />
+    <Compile Include="Assets\Scripts\Card\ConfusionCard.cs" />
     <Compile Include="Assets\Scripts\Card\DeckOfCards.cs" />
     <Compile Include="Assets\Scripts\Card\DoubleDiceCard.cs" />
     <Compile Include="Assets\Scripts\Card\ElevatorCard.cs" />
