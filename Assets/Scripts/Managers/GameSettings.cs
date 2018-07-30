@@ -8,6 +8,7 @@ public class GameSettings : MonoBehaviour {
 	public bool GameIsOver = false;
 	public Piece winner;
 	private DataManagement data;
+    public static Audio audioManager;
 
 	void Awake () {
 		playerList = new List<Piece> ();
@@ -34,10 +35,13 @@ public class GameSettings : MonoBehaviour {
 				playerList.Remove (playerList [i]);
 			}
 		}
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Audio>();
+        
 	}
 
 	void Start () {
-		
-	}
+        audioManager.musicPlayer.clip = audioManager.musicTracks[1];
+        //audioManager.musicPlayer.Play();
+    }
 
 }

@@ -28,6 +28,7 @@ public class BoardSettings : MonoBehaviour {
             if (t.type == TileType.Normal)
             {
                 t.type = TileType.Chance;
+                t.tileNumberText.text = "?";
                 t.tileNumberText.color = Color.blue;
                 t.ResetTileType();
                 chanceCount++;

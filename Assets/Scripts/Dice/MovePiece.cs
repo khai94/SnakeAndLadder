@@ -19,6 +19,7 @@ public class MovePiece : MonoBehaviour {
 	private BoardSettings gameBoard;
 	private UISettings gameUI;
 	private CameraView cam;
+   // private Audio audioManager;
 
 	// Use this for initialization
 	void Awake () {
@@ -30,7 +31,8 @@ public class MovePiece : MonoBehaviour {
 		go = GameObject.Find ("UIManager");
 		gameUI = go.GetComponent<UISettings> ();
 		cam = Camera.main.gameObject.GetComponent<CameraView> ();
-	}
+        //audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Audio>();
+    }
 
 	void Start () {
 		if (currentPiece.isBot) {
@@ -87,8 +89,9 @@ public class MovePiece : MonoBehaviour {
 		if (currentPiece.status == Status.Stunned) {
 		} else {
 			endTurnButton.interactable = false;
+            GameSettings.audioManager.sfxPlayer.clip = GameSettings.audioManager.soundEffects[0];
 
-			int target = currentPiece.position;
+            int target = currentPiece.position;
 
 			// randomize dice face sprite before actually getting the value to get the "rolling" effect.
 			for (int i = 0; i < 5; i++) {
@@ -126,6 +129,7 @@ public class MovePiece : MonoBehaviour {
                     }
 
                     currentPiece.UpdatePosition(target);
+                    GameSettings.audioManager.sfxPlayer.Play();
                     //cam.FollowTarget();
                     yield return new WaitForSeconds(1f);
                 }
@@ -184,8 +188,13 @@ public class MovePiece : MonoBehaviour {
 
 		if (currentPiece.currentTile.head != null) {
 			if (currentPiece.currentTile.head.type == TileType.Snake || currentPiece.currentTile.head.type == TileType.Ladder) {
-				currentPiece.currentTile = currentPiece.currentTile.connectedTile;
+
+                if (currentPiece.currentTile.head.type == TileType.Ladder)
+                    GameSettings.audioManager.sfxPlayer.clip = GameSettings.audioManager.soundEffects[1];
+
+                currentPiece.currentTile = currentPiece.currentTile.connectedTile;
 				currentPiece.UpdatePosition ();
+                GameSettings.audioManager.sfxPlayer.Play();
 			}
 			return;
 		} else {
