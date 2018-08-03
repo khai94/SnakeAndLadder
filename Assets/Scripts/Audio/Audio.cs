@@ -16,7 +16,6 @@ public class Audio : MonoBehaviour {
 		if(audioManager)
         {
             Destroy(this.gameObject);
-       
         }
         else
         {
@@ -26,6 +25,18 @@ public class Audio : MonoBehaviour {
 
         LoadData();
 	}
+
+    public void PlayMusic(int trackNumber)
+    {
+        musicPlayer.clip = musicTracks[trackNumber];
+        musicPlayer.Play();
+    }
+
+    public void PlaySoundEffect(int trackNumber)
+    {
+        sfxPlayer.clip = soundEffects[trackNumber];
+        sfxPlayer.Play();
+    }
 
     public void LoadData()
     {

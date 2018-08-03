@@ -86,10 +86,14 @@ public class MovePiece : MonoBehaviour {
     }
 
 	private IEnumerator Move() {
-		if (currentPiece.status == Status.Stunned) {
-		} else {
+		if (currentPiece.status == Status.Stunned)
+        {
+            GameSettings.audioManager.PlaySoundEffect(2);
+		}
+        else
+        {
 			endTurnButton.interactable = false;
-            GameSettings.audioManager.sfxPlayer.clip = GameSettings.audioManager.soundEffects[0];
+            //GameSettings.audioManager.sfxPlayer.clip = GameSettings.audioManager.soundEffects[0];
 
             int target = currentPiece.position;
 
@@ -129,7 +133,10 @@ public class MovePiece : MonoBehaviour {
                     }
 
                     currentPiece.UpdatePosition(target);
-                    GameSettings.audioManager.sfxPlayer.Play();
+                    
+                    // play token move sound
+                    GameSettings.audioManager.PlaySoundEffect(0);   
+                    //GameSettings.audioManager.sfxPlayer.Play();
                     //cam.FollowTarget();
                     yield return new WaitForSeconds(1f);
                 }
@@ -190,11 +197,12 @@ public class MovePiece : MonoBehaviour {
 			if (currentPiece.currentTile.head.type == TileType.Snake || currentPiece.currentTile.head.type == TileType.Ladder) {
 
                 if (currentPiece.currentTile.head.type == TileType.Ladder)
-                    GameSettings.audioManager.sfxPlayer.clip = GameSettings.audioManager.soundEffects[1];
+                    GameSettings.audioManager.PlaySoundEffect(1);   // Play step on ladder sound
+                    //GameSettings.audioManager.sfxPlayer.clip = GameSettings.audioManager.soundEffects[1];
 
                 currentPiece.currentTile = currentPiece.currentTile.connectedTile;
 				currentPiece.UpdatePosition ();
-                GameSettings.audioManager.sfxPlayer.Play();
+                //GameSettings.audioManager.sfxPlayer.Play();
 			}
 			return;
 		} else {
@@ -224,6 +232,10 @@ public class MovePiece : MonoBehaviour {
 			isMoved = false;
 			turnEnds = true;
 		}
+        else
+        {
+            GameSettings.audioManager.PlaySoundEffect(2);
+        }
 	}
 
 	private void UpdatePlayerInfo() {

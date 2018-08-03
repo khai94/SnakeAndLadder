@@ -49,8 +49,11 @@ public class Chance : MonoBehaviour {
 				    target = Random.Range (10, 80);
 			    } while (target == move.currentPiece.position);
 
+                //GameSettings.audioManager.sfxPlayer.clip = GameSettings.audioManager.soundEffects[3];
 			    move.currentPiece.position = target;
 			    move.currentPiece.UpdatePosition (target);
+                GameSettings.audioManager.PlaySoundEffect(3);   // play teleport track
+                //GameSettings.audioManager.sfxPlayer.Play();
 			    gameUI.eventDescText.text = "You are magically teleported to a new location!";
 			    break;
 
@@ -81,7 +84,8 @@ public class Chance : MonoBehaviour {
                 break;
 
             default:
-                ExecuteEffect(i);
+                gameUI.eventPanel.gameObject.SetActive(false);
+                ExecuteEffect(Random.Range(0, 10));
                 break;
 		}
 	}

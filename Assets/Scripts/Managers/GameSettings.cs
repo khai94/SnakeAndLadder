@@ -36,11 +36,11 @@ public class GameSettings : MonoBehaviour {
 			}
 		}
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Audio>();
-        
 	}
 
 	void Start () {
-        audioManager.musicPlayer.clip = audioManager.musicTracks[1];
+        audioManager.PlayMusic(1);
+        //audioManager.musicPlayer.clip = audioManager.musicTracks[1];
         //audioManager.musicPlayer.Play();
     }
 

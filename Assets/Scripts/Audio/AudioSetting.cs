@@ -10,15 +10,10 @@ public class AudioSetting : MonoBehaviour {
     public Toggle musicToggle;
     public Toggle sfxToggle;
     int test;
-
-	public void FindAudioManager()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Audio>();
-    }
-
+    
     private void Awake()
     {
-        FindAudioManager();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<Audio>();
         LoadData();
     }
 

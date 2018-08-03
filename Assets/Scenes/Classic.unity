@@ -5028,7 +5028,7 @@ Prefab:
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
       propertyPath: slotList.Array.data[4].isActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
@@ -5063,17 +5063,17 @@ Prefab:
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
       propertyPath: slotList.Array.data[3].isBot
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
       propertyPath: slotList.Array.data[2].isBot
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
       propertyPath: slotList.Array.data[0].isBot
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
@@ -11161,11 +11161,6 @@ Prefab:
     - target: {fileID: 4700942340133788, guid: fed2cdad2754aa34fad88d95868199c3, type: 2}
       propertyPath: m_RootOrder
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 82917767396224280, guid: fed2cdad2754aa34fad88d95868199c3,
-        type: 2}
-      propertyPath: m_Volume
-      value: 0.59
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fed2cdad2754aa34fad88d95868199c3, type: 2}
