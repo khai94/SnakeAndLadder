@@ -5017,7 +5017,7 @@ Prefab:
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
       propertyPath: slotList.Array.data[3].isActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
@@ -5028,7 +5028,7 @@ Prefab:
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
       propertyPath: slotList.Array.data[4].isActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
@@ -5049,7 +5049,7 @@ Prefab:
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
       propertyPath: slotList.Array.data[1].name
-      value: PLAYER 2
+      value: BOT 1
       objectReference: {fileID: 0}
     - target: {fileID: 1501563769594222, guid: 9ccda9eae26071c42ad0f913a723f0eb, type: 2}
       propertyPath: m_TagString
@@ -5058,12 +5058,12 @@ Prefab:
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
       propertyPath: slotList.Array.data[4].isBot
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
       propertyPath: slotList.Array.data[3].isBot
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
@@ -5073,7 +5073,7 @@ Prefab:
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
       propertyPath: slotList.Array.data[0].isBot
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
@@ -5083,7 +5083,7 @@ Prefab:
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
       propertyPath: slotList.Array.data[2].name
-      value: PLAYER 3
+      value: BOT 2
       objectReference: {fileID: 0}
     - target: {fileID: 114474495702107780, guid: 9ccda9eae26071c42ad0f913a723f0eb,
         type: 2}
@@ -9120,11 +9120,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
-  m_ReferencePixelsPerUnit: 1
+  m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 480}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -9606,11 +9606,11 @@ RectTransform:
   m_Father: {fileID: 808907436}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 48, y: 202.4}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 45, y: -30}
   m_SizeDelta: {x: 30, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &968887347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11874,7 +11874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 50}
+  m_AnchoredPosition: {x: 0.000030517578, y: 29.999985}
   m_SizeDelta: {x: 120, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1159114909
