@@ -11,4 +11,8 @@ public class Data{
     // audio settings
     public bool musicIsOn;
     public bool musicToggleIsOn;
+
+    // theme settings
+    //public Color themeColor;
+    public float r, g, b, a;
 }

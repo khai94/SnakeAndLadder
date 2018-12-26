@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Card : MonoBehaviour {
+[CreateAssetMenu(fileName = "New Card", menuName = "Card")]
+public class Card : ScriptableObject {
+    public CardProperties[] properties;
+    /*
     public string cardName;
     public string description;
-    public Effect effect;
+    public Sprite artwork;
+    public int cost;
 
-    public abstract void ExecuteEffect(Effect e);
+    
+    public Effect effect;
+    public TargetMode target;
+    */
 }

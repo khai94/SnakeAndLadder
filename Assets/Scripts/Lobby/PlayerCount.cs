@@ -8,16 +8,6 @@ public class PlayerCount : MonoBehaviour {
 	public Dropdown dropdown;
 	public PlayerSlot[] playerArray;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	public void SetPlayerCount()
 	{
 		int count = dropdown.value + 2;

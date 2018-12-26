@@ -53,3 +53,6 @@ TagManager:
   - name: Player
     uniqueID: 1369323605
     locked: 0
+  - name: Card
+    uniqueID: 3787476335
+    locked: 0
